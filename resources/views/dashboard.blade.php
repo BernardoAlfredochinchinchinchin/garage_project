@@ -19,7 +19,7 @@
                             <p class="text-gray-600 mb-5">
                                 Wilt u uw auto langsbrengen voor onderhoud, chiptuning of een andere service? Plan direct een datum en tijd in die u het beste uitkomt. Wij zorgen dat we klaarstaan voor uw voertuig.
                             </p>
-                            <a href="{{ url('/afspraak-maken') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded transition duration-150 ease-in-out">
+                            <a href="{{ url('/afspraak  ') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded transition duration-150 ease-in-out">
                                 Afspraak maken
                             </a>
                         </div>
