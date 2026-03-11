@@ -14,18 +14,18 @@
         <header class="header">
             <a class="brand" href="{{ url('/') }}">{{ config('app.name', 'Garage Project') }}</a>
 
-            @if (Route::has('login'))
-                <nav class="nav">
-                    @auth
-                        <a class="btn" href="{{ url('/dashboard') }}">Dashboard</a>
-                    @else
-                        <a class="btn" href="{{ route('login') }}">Log in</a>
-                        @if (Route::has('register'))
-                            <a class="btn" href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </nav>
-            @endif
+            <nav class="nav header-actions">
+                @auth
+                    <a class="btn btn-primary" href="{{ url('/dashboard') }}">Dashboard</a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn">Uitloggen</button>
+                    </form>
+                @else
+                    <a class="btn btn-primary" href="{{ route('login') }}">Log in</a>
+                    <a class="btn" href="{{ route('register') }}">Register</a>
+                @endauth
+            </nav>
         </header>
 
         <main class="card">
@@ -34,14 +34,13 @@
                 Een eenvoudige startpagina om afspraken te plannen en je dashboard snel te bereiken.
             </p>
 
-            <div class="actions">
+            <!-- <div class="actions">
                 <a class="btn btn-primary" href="{{ url('/afspraak') }}">Maak een afspraak</a>
                 <a class="btn" href="{{ url('/dashboard') }}">Naar dashboard</a>
-            </div>
+            </div> -->
 
             <ul class="list">
                 <li>Snelle toegang tot afspraken</li>
-                <li>Duidelijke, rustige layout</li>
                 <li>Klaar om verder uit te bouwen</li>
             </ul>
         </main>
