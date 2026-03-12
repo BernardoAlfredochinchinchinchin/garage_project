@@ -9,11 +9,8 @@
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden sm:rounded-lg">
                 <div class="p-8 text-gray-900">
-                    
                     <h3 class="text-2xl font-bold text-center mb-8 border-b pb-4">Welkom bij BMPerformance</h3>
-
                     <div class="flex flex-col space-y-8">
-                        
                         <div class="p-6 rounded-lg flex flex-col items-center text-center">
                             <h4 class="text-xl font-semibold text-gray-800 mb-2">Afspraak maken</h4>
                             <p class="text-gray-600 mb-5">
@@ -43,9 +40,7 @@
                                 Naar Reviews
                             </a>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>
