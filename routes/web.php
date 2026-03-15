@@ -3,6 +3,7 @@
 use App\Http\Controllers\MonteurController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AfspraakController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,4 +23,7 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+//afspraak maken
+Route::get('/afspraak-maken', [AfspraakController::class, 'create'])->name('afspraak.create');
+Route::post('/afspraak-maken', [AfspraakController::class, 'store'])->name('afspraak.store');
 require __DIR__.'/auth.php';
