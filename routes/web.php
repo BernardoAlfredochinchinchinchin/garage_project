@@ -18,12 +18,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/monteur', [MonteurController::class, 'index'])->name('monteur');
-    Route::get('/afspraak', function () {
-        return view('afspraak');
-    });
+    
+    // Afspraak routes
+    Route::get('/afspraak-maken', [AfspraakController::class, 'create'])->name('afspraak.create');
+    Route::post('/afspraak-maken', [AfspraakController::class, 'store'])->name('afspraak.store');
+    Route::get('/afspraken', [AfspraakController::class, 'index'])->name('afspraak.index'); 
 });
 
-//afspraak maken
-Route::get('/afspraak-maken', [AfspraakController::class, 'create'])->name('afspraak.create');
-Route::post('/afspraak-maken', [AfspraakController::class, 'store'])->name('afspraak.store');
 require __DIR__.'/auth.php';

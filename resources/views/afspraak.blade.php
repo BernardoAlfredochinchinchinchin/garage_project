@@ -69,14 +69,11 @@
                 minDate: "today",           
                 locale: "nl",               
                 onChange: function(selectedDates, dateStr, instance) {
-                    // Sla de datum op, maar verberg eventuele oude bevestigingstekst
                     tijdelijkeDatum = dateStr;
                     document.getElementById('gekozen_datum').value = dateStr;
                     document.getElementById('gekozen-datum-text').classList.add('hidden');
                 }
             });
-
-            // Logica voor de 'Bevestig datum' knop
             document.getElementById('kies-dag-btn').addEventListener('click', function() {
                 const textEl = document.getElementById('gekozen-datum-text');
                 if(tijdelijkeDatum !== "") {
