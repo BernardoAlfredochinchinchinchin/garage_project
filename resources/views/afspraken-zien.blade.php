@@ -19,6 +19,7 @@
                                 <li class="p-4 border rounded-lg shadow-sm">
                                     <p><strong>Naam:</strong> {{ $afspraak->naam }}</p>
                                     <p><strong>Kenteken:</strong> {{ $afspraak->kenteken }}</p>
+                                    <p><strong>Status:</strong> {{ $afspraak->status }}</p>
                                     <p><strong>Datum:</strong> {{ \Carbon\Carbon::parse($afspraak->datum)->format('d-m-Y') }}</p>
                                 </li>
                             @endforeach
