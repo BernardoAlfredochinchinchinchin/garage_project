@@ -13,7 +13,7 @@ class AfspraakController extends Controller
     }
     public function store(Request $request)
     {
-
+  
         $request->validate([
         'naam'     => 'required|string|max:255',
         'kenteken' => 'required|string|alpha_num|max:6',
@@ -26,6 +26,6 @@ class AfspraakController extends Controller
             'kenteken' => $request->kenteken,
             'datum'    => $request->datum,
         ]);
-        return back()->with('success', 'Bedankt ' . $request->naam . '! Uw afspraak voor ' . $request->datum . ' is succesvol aangevraagd.');
+        return back()->with('success', 'Bedankt ' . $request->naam . '! Uw afspraak voor ' . $request->datum . ' is aangevraagd.');
     }
 }
