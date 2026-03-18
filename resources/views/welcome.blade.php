@@ -29,15 +29,11 @@
         </header>
 
         <main class="card">
-            <h1>Welkom bij je Garage Project</h1>
+            <h1>Welkom bij BMperformace</h1>
             <p>
-                Een eenvoudige startpagina om afspraken te plannen en je dashboard snel te bereiken.
+                <p>Welkom bij BMperformace! Hier kun je snel en gemakkelijk afspraken maken en beheren.</p>
             </p>
 
-            <!-- <div class="actions">
-                <a class="btn btn-primary" href="{{ url('/afspraak') }}">Maak een afspraak</a>
-                <a class="btn" href="{{ url('/dashboard') }}">Naar dashboard</a>
-            </div> -->
 
             <ul class="list">
                 <li>Snelle toegang tot afspraken</li>
