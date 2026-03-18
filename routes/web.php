@@ -4,6 +4,7 @@ use App\Http\Controllers\MonteurController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AfspraakController;
+use App\Http\Controllers\ReceptionistController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,7 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/afspraken', [AfspraakController::class, 'index'])->name('afspraak.index'); 
 
     //receptionist
-    Route::get('/receptionist', [AfspraakController::class, 'index'])->name('receptionist');
+    Route::get('/receptionist', [ReceptionistController::class, 'index'])->name('receptionist');
 });
 
 require __DIR__.'/auth.php';

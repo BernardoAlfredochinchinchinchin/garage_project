@@ -10,7 +10,6 @@ class AfspraakController extends Controller
 {
     public function index()
     {
-   
         $afspraken = Afspraak::all(); 
         
         return view('afspraken-zien', compact('afspraken'));
@@ -25,7 +24,7 @@ class AfspraakController extends Controller
     {
         $request->validate([
             'naam'     => 'required|string|max:255',
-            'kenteken' => 'required|string|alpha_num|max:6',
+            'kenteken' => 'required|string|max:10', 
             'datum'    => 'required|date',
         ]);
 
@@ -33,6 +32,7 @@ class AfspraakController extends Controller
             'naam'     => $request->naam,
             'kenteken' => $request->kenteken,
             'datum'    => $request->datum,
+            'status'   => 'in afwachting', 
         ]);
 
         return back()->with('success', 'Bedankt ' . $request->naam . '! Uw afspraak voor ' . $request->datum . ' is aangevraagd.');
