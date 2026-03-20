@@ -36,6 +36,10 @@
                             <label for="kenteken" class="block text-black-500 mb-1">Kenteken:</label>
                             <input type="text" id="kenteken" name="kenteken" required class="w-full border border-gray-300 p-2 focus:ring-1 focus:ring-gray-400 outline-none transition">
                         </div>
+                        <div>
+                            <label for="opmerkingen" class="block text-black-500 mb-1">Opmerkingen (optioneel):</label>
+                            <textarea id="opmerkingen" name="opmerkingen" rows="3" placeholder="Bijv. probleem met remmen, APK keuring, etc." class="w-full border border-gray-300 p-2 focus:ring-1 focus:ring-gray-400 outline-none transition resize-none">{{ old('opmerkingen') }}</textarea>
+                        </div>
                     </div>
                     <div class="mt-8">
                         <button type="submit" class="px-10 py-2 border border-gray-400 rounded-lg text-black-600 hover:bg-gray-100 transition duration-200">

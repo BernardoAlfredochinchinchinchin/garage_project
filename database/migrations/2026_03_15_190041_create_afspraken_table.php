@@ -14,6 +14,10 @@ return new class extends Migration
             $table->string('kenteken');
             $table->date('datum');
             $table->string('status')->default('in afwachting');
+            $table->text('opmerkingen')->nullable();
+            $table->text('taken')->nullable();
+            $table->text('materialen')->nullable();
+            
             $table->timestamps();
         });
     }
