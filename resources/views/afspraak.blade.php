@@ -24,7 +24,6 @@
                     {{ session('success') }}
                 </div>
             @endif
-            test
             <form action="{{ route('afspraak.store') }}" method="POST" class="border border-gray-300 p-10 max-w-4xl mx-auto flex flex-col md:flex-row gap-12">
                 @csrf
                 <div class="flex-1 flex flex-col justify-between">
