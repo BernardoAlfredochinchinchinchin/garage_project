@@ -38,7 +38,7 @@
                         </div>
                         <div>
                             <label for="opmerkingen" class="block text-black-500 mb-1">Opmerkingen (optioneel):</label>
-                            <textarea id="opmerkingen" name="opmerkingen" rows="3" placeholder="Bijv. probleem met remmen, APK keuring, etc." class="w-full border border-gray-300 p-2 focus:ring-1 focus:ring-gray-400 outline-none transition resize-none">{{ old('opmerkingen') }}</textarea>
+                            <textarea id="opmerkingen" name="opmerkingen" rows="3" placeholder="Voer hier uw auto merk en model in, en waar u last van heeft..." class="w-full border border-gray-300 p-2 focus:ring-1 focus:ring-gray-400 outline-none transition resize-none">{{ old('opmerkingen') }}</textarea>
                         </div>
                     </div>
                     <div class="mt-8">
