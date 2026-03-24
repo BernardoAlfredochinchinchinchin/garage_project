@@ -11,5 +11,19 @@ class Afspraak extends Model
 
     protected $table = 'afspraken';
 
-    protected $fillable = ['naam', 'kenteken', 'datum', 'status', 'opmerkingen'];
+    protected $fillable = [
+        'user_id',
+        'naam',
+        'kenteken',
+        'datum',
+        'status',
+        'opmerkingen',
+        'taken',
+        'materialen'
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

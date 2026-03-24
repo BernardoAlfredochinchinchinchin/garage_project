@@ -10,8 +10,9 @@ class AfspraakController extends Controller
 {
     public function index()
     {
-        // Haal alles op BEHALVE 'taken' en 'materialen'
-        $afspraken = Afspraak::all()->makeHidden(['taken', 'materialen']);
+        $afspraken = Afspraak::with('user')
+            ->get()
+            ->makeHidden(['taken', 'materialen']);
 
         return view('afspraken-zien', compact('afspraken'));
     }
@@ -24,19 +25,22 @@ class AfspraakController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'naam'        => 'required|string|max:255',
             'kenteken'    => 'required|string|max:10',
             'datum'       => 'required|date',
             'opmerkingen' => 'nullable|string|max:1000',
         ]);
 
+        $user = Auth::user();
+
         Afspraak::create([
-            'naam'        => $request->naam,
+            'user_id'     => $user->id,
+            'naam'        => $user->name, 
             'kenteken'    => $request->kenteken,
             'datum'       => $request->datum,
             'status'      => 'in afwachting',
             'opmerkingen' => $request->opmerkingen,
         ]);
+
         return back()->with('success', 'Bedankt! Uw afspraak voor ' . $request->datum . ' is aangevraagd.');
     }
 }

@@ -19,27 +19,55 @@
                     Vraag uw afspraak aan!
                 </h1>
             </div>
+
             @if(session('success'))
                 <div class="mb-6 p-4 bg-green-100 text-green-700 rounded-lg text-center">
                     {{ session('success') }}
                 </div>
             @endif
+
             <form action="{{ route('afspraak.store') }}" method="POST" class="border border-gray-300 p-10 max-w-4xl mx-auto flex flex-col md:flex-row gap-12">
                 @csrf
                 <div class="flex-1 flex flex-col justify-between">
                     <div class="space-y-6">
+
+                        {{-- Show the name from the account (read-only) --}}
                         <div>
-                            <label for="naam" class="block text-black-500 mb-1">Naam:</label>
-                            <input type="text" id="naam" name="naam" required class="w-full border border-gray-300 p-2 focus:ring-1 focus:ring-gray-400 outline-none transition">
+                            <label class="block text-black-500 mb-1">Naam:</label>
+                            <input 
+                                type="text" 
+                                value="{{ Auth::user()->name }}" 
+                                disabled 
+                                class="w-full border border-gray-200 p-2 bg-gray-50 text-gray-500 cursor-not-allowed outline-none"
+                            >
                         </div>
+
                         <div>
                             <label for="kenteken" class="block text-black-500 mb-1">Kenteken:</label>
-                            <input type="text" id="kenteken" name="kenteken" required class="w-full border border-gray-300 p-2 focus:ring-1 focus:ring-gray-400 outline-none transition">
+                            <input 
+                                type="text" 
+                                id="kenteken" 
+                                name="kenteken" 
+                                required 
+                                value="{{ old('kenteken') }}"
+                                class="w-full border border-gray-300 p-2 focus:ring-1 focus:ring-gray-400 outline-none transition"
+                            >
+                            @error('kenteken')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
+
                         <div>
                             <label for="opmerkingen" class="block text-black-500 mb-1">Opmerkingen (optioneel):</label>
-                            <textarea id="opmerkingen" name="opmerkingen" rows="3" placeholder="Voer hier uw auto merk en model in, en waar u last van heeft..." class="w-full border border-gray-300 p-2 focus:ring-1 focus:ring-gray-400 outline-none transition resize-none">{{ old('opmerkingen') }}</textarea>
+                            <textarea 
+                                id="opmerkingen" 
+                                name="opmerkingen" 
+                                rows="3" 
+                                placeholder="Voer hier uw auto merk en model in, en waar u last van heeft..." 
+                                class="w-full border border-gray-300 p-2 focus:ring-1 focus:ring-gray-400 outline-none transition resize-none"
+                            >{{ old('opmerkingen') }}</textarea>
                         </div>
+
                     </div>
                     <div class="mt-8">
                         <button type="submit" class="px-10 py-2 border border-gray-400 rounded-lg text-black-600 hover:bg-gray-100 transition duration-200">
@@ -47,6 +75,7 @@
                         </button>
                     </div>
                 </div>
+
                 <div class="w-full md:w-80 flex flex-col pt-6 md:pt-0 items-center">
                     <input type="hidden" id="gekozen_datum" name="datum" required>
                     <p class="text-sm text-black-500 leading-relaxed text-center">
@@ -63,6 +92,7 @@
             </form>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/nl.js"></script>
     <script>

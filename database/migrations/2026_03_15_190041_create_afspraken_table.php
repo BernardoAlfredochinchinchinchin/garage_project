@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('afspraken', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('naam');
             $table->string('kenteken');
             $table->date('datum');
@@ -17,7 +18,6 @@ return new class extends Migration
             $table->text('opmerkingen')->nullable();
             $table->text('taken')->nullable();
             $table->text('materialen')->nullable();
-            
             $table->timestamps();
         });
     }
