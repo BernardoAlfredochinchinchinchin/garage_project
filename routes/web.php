@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     //monteur
     Route::get('/monteur', [MonteurController::class, 'index'])->name('monteur');
+    Route::post('/monteur/{afspraak}/save', [MonteurController::class, 'store'])->name('monteur.store');
     
     // Afspraak routes
     Route::get('/afspraak-maken', [AfspraakController::class, 'create'])->name('afspraak.create');
