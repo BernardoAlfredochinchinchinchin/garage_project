@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\MonteurTaak;
+
+
 
 class Afspraak extends Model
 {
@@ -26,4 +29,9 @@ class Afspraak extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function monteurTaken()
+{
+    return $this->hasMany(MonteurTaak::class, 'afspraak_id');
+}
 }

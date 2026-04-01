@@ -14,7 +14,8 @@ class MonteurTaak extends Model
     protected $fillable = [
         'afspraak_id',
         'uren',
-        'materialen'
+        'materialen',
+        'kosten'
     ];
 
     public function afspraak()

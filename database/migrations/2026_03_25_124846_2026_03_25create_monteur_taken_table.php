@@ -13,6 +13,8 @@ return new class extends Migration
             $table->foreignId('afspraak_id')->constrained('afspraken')->onDelete('cascade');
             $table->decimal('uren', 5, 2);
             $table->text('materialen');
+            $table->decimal('kosten', 10, 2);
+
             $table->timestamps();
         });
     }

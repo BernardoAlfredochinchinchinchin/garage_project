@@ -12,7 +12,7 @@ class MonteurController extends Controller
 {
     public function index(): View
     {
-        $afspraken = Afspraak::orderBy('datum', 'asc')->get();
+        $afspraken = Afspraak::with('monteurTaken')->orderBy('datum', 'asc')->get();
         return view('monteur', compact('afspraken'));
     }
 
@@ -21,7 +21,9 @@ class MonteurController extends Controller
         $validated = $request->validate([
             'afspraak_id' => 'required|exists:afspraken,id',
             'uren' => 'required|numeric|min:0.25',
-            'materialen' => 'required|string'
+            'materialen' => 'required|string',
+            'kosten' => 'required|numeric|min:0.25',
+
         ]);
 
         // Monteur taak opslaan
