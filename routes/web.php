@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AfspraakController;
 use App\Http\Controllers\ReceptionistController;
+use App\Http\Controllers\ReviewController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,6 +35,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/receptionist/afspraak/{afspraak}', [ReceptionistController::class, 'update'])->name('receptionist.afspraak.update');
     Route::patch('/receptionist/afspraak/{id}/status', [ReceptionistController::class, 'updateStatus'])->name('receptionist.afspraak.updateStatus');
     Route::delete('/receptionist/afspraak/{afspraak}', [ReceptionistController::class, 'destroy'])->name('receptionist.afspraak.destroy');
-});});
+
+    //reviews
+    Route::get('/reviews_post', [ReviewController::class, 'create'])->name('reviews.create');
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+    });});
 
 require __DIR__.'/auth.php';
