@@ -28,7 +28,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/afspraken', [AfspraakController::class, 'index'])->name('afspraak.index'); 
 
     //receptionist
+    Route::middleware(['auth'])->group(function () {
     Route::get('/receptionist', [ReceptionistController::class, 'index'])->name('receptionist');
-});
+    Route::get('/receptionist/afspraak/{afspraak}/edit', [ReceptionistController::class, 'edit'])->name('receptionist.afspraak.edit');
+    Route::patch('/receptionist/afspraak/{afspraak}', [ReceptionistController::class, 'update'])->name('receptionist.afspraak.update');
+    Route::patch('/receptionist/afspraak/{id}/status', [ReceptionistController::class, 'updateStatus'])->name('receptionist.afspraak.updateStatus');
+    Route::delete('/receptionist/afspraak/{afspraak}', [ReceptionistController::class, 'destroy'])->name('receptionist.afspraak.destroy');
+});});
 
 require __DIR__.'/auth.php';
