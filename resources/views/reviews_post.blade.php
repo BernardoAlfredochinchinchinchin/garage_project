@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Review Schrijven</title>
-    <!-- Zorg dat Tailwind CSS geladen is via je app layout of CDN -->
+ 
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 min-h-screen pt-10">
 
     <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-sm">
         
-        <!-- Header met Terug knop en Titel (Jouw styling) -->
-        <div class="flex items-center mb-16 relative">
-            <a href="{{ url('/dashboard') }}" class="px-8 py-2 border border-gray-400 rounded-3xl text-black-600 hover:bg-gray-100 transition duration-200 z-10">
+    <div class="flex items-center mb-16 relative">
+            <a href="{{ url('/reviews') }}" class="px-8 py-2 border border-gray-400 rounded-3xl text-black-600 hover:bg-gray-100 transition duration-200 z-10">
                 Terug
             </a>
             <h1 class="text-3xl text-black-500 absolute left-1/2 transform -translate-x-1/2">
@@ -21,14 +20,12 @@
             </h1>
         </div>
 
-        <!-- Succesmelding -->
         @if (session('status'))
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6" role="alert">
                 {{ session('status') }}
             </div>
         @endif
 
-        <!-- Foutmeldingen -->
         @if ($errors->any())
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6" role="alert">
                 <ul class="list-disc list-inside">
@@ -39,7 +36,7 @@
             </div>
         @endif
 
-        <!-- Formulier -->
+
         <form action="{{ route('reviews.store') }}" method="POST">
             @csrf
 

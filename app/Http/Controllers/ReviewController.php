@@ -7,7 +7,11 @@ use App\Models\Review;
 
 class ReviewController extends Controller
 {
-  
+    public function index()
+    {
+        $reviews = Review::with('user')->latest()->get();
+        return view('reviews', compact('reviews'));
+    }
     public function create()
     {
         return view('reviews_post');

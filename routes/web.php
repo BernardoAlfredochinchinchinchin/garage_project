@@ -43,7 +43,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/receptionist/afspraak/{id}/status', [ReceptionistController::class, 'updateStatus'])->name('receptionist.afspraak.updateStatus');
     Route::delete('/receptionist/afspraak/{afspraak}', [ReceptionistController::class, 'destroy'])->name('receptionist.afspraak.destroy');
 
-    //reviews
+    // reviews
+    Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
     Route::get('/reviews_post', [ReviewController::class, 'create'])->name('reviews.create');
     Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
     });});
