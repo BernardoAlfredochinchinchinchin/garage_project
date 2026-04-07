@@ -25,6 +25,23 @@
                                         <p><strong>Opmerkingen:</strong> {{ $afspraak->opmerkingen }}</p>
                                     @endif
 
+                                    @if ($afspraak->status === 'Afgerond')
+                                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                    <a href="{{ route('monteur.betalen', $afspraak->id) }}">
+                                        Vacature betalen
+                                    
+                                </button>    
+                                    @endif
+
+
+                                    @if ($afspraak->status === 'Betaald')
+                                        <button class="">
+                                    <a href="{{ route('monteur.bon', $afspraak->id) }}" target="_blank" class="inline-flex items-center justify-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm transition">
+                                        bon bekijken
+                                    </a>
+                                </button>    
+                                    @endif
+
                                     {{-- 'taken' en 'materialen' worden NIET getoond aan de gebruiker --}}
                                 </div>
                             @endforeach

@@ -46,22 +46,33 @@
                                             <span class="px-2 py-1 bg-red-100 text-red-800 rounded text-sm">
                                                 Afgekeurd
                                             </span>
+
+
+                                        @elseif($afspraak->status === 'Betaald')
+                                            <span class="px-2 py-1 bg-blue-100 text-green-800 rounded text-sm">
+                                                Betaald
+                                            </span>
+                                            
                                         @else
                                             <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-sm">
                                                 In Afwachting
                                             </span>
                                         @endif
+
+                                        
                                     </td>
 
-                                    {{-- Dropdown om status aan te passen --}}
+                                    {{-- Dropdown om status aan te passen --}}\
+
                                     <td class="border p-2">
                                         <form action="{{ route('receptionist.afspraak.updateStatus', $afspraak->id) }}" 
                                               method="POST" 
                                               class="flex items-center gap-2">
                                             @csrf
                                             @method('PATCH')
+                                    @if($afspraak->status !== 'Betaald')
 
-                                            <select name="status" class="border rounded p-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300">
+                                            <select name="status" class="border rounded p-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300" {{ $afspraak->status === 'Betaald' ? '' : '' }}>
                                                 <option value="in afwachting" {{ $afspraak->status === 'in afwachting' ? 'selected' : '' }}>
                                                     In Afwachting
                                                 </option>
@@ -72,11 +83,15 @@
                                                     Afgekeurd
                                                 </option>
                                             </select>
+                                                            @endif
 
+                                            
+                                    @if($afspraak->status !== 'Betaald')
                                             <button type="submit" 
-                                                    class="bg-blue-500 hover:bg-blue-600 text-white text-sm px-3 py-1 rounded">
+                                                    class="bg-blue-500 hover:bg-blue-600 text-white text-sm px-3 py-1 rounded ">
                                                 Opslaan
                                             </button>
+                                        @endif
                                         </form>
                                     </td>
                                 </tr>

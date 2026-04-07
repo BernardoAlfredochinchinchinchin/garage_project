@@ -12,7 +12,8 @@ class MonteurController extends Controller
 {
     public function index(): View
     {
-        $afspraken = Afspraak::with('monteurTaken')->orderBy('datum', 'asc')->get();
+        // Monteur ziet alleen taken die al goedgekeurd of afgerond zijn.
+        $afspraken = Afspraak::whereIn('status', ['Afgerond', 'Goedgekeurd'])->get();
         return view('monteur', compact('afspraken'));
     }
 
@@ -35,4 +36,26 @@ class MonteurController extends Controller
 
         return response()->json(['success' => true, 'message' => 'Taak opgeslagen']);
     }
+
+    public function bon(Afspraak $afspraak)
+    {
+        // Laad de gekoppelde taak om bongegevens te tonen.
+        $afspraak->load('monteurTaken');
+        $taak = $afspraak->monteurTaken->first();
+
+        if (!$taak) {
+            return redirect()->route('monteur')->with('error', 'Nog geen taakgegevens om te printen.');
+        }
+
+        return view('bon', compact('afspraak', 'taak'));
+    }
+
+    public function betalen(Afspraak $afspraak)
+    {
+        // Na betaling status vastzetten op Betaald.
+        $afspraak->update(['status' => 'Betaald']);
+
+    return redirect()->route('afspraak.index')->with('success', 'Betaling succesvol verwerkt.');
+    }
+
 }

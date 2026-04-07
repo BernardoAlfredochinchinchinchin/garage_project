@@ -1,49 +1,49 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
+        <h2 class="text-lg font-medium text-gray-700">
             Monteur Dashboard
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <div class="py-4">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
                 <!-- Linkerkant: Materialen & Prijzen -->
                 <div class="lg:col-span-1">
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 sticky top-32">
-                        <h3 class="text-lg font-bold mb-4 text-gray-800">Materialen Prijzengids</h3>
-                        <div class="space-y-3">
-                            <div class="border-b pb-3">
-                                <p class="text-sm font-medium text-gray-700">Olie 5W30</p>
-                                <p class="text-sm text-gray-600">€ 45,00</p>
+                    <div class="border p-4 bg-gray-50">
+                        <h3 class="text-base font-semibold mb-3">Materialen Prijzengids</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="border-b pb-2">
+                                <p>Olie 5W30</p>
+                                <p>€ 45,00</p>
                             </div>
-                            <div class="border-b pb-3">
-                                <p class="text-sm font-medium text-gray-700">Oliefilter</p>
-                                <p class="text-sm text-gray-600">€ 12,50</p>
+                            <div class="border-b pb-2">
+                                <p>Oliefilter</p>
+                                <p>€ 12,50</p>
                             </div>
-                            <div class="border-b pb-3">
-                                <p class="text-sm font-medium text-gray-700">Luchtfilter</p>
-                                <p class="text-sm text-gray-600">€ 18,00</p>
+                            <div class="border-b pb-2">
+                                <p>Luchtfilter</p>
+                                <p>€ 18,00</p>
                             </div>
-                            <div class="border-b pb-3">
-                                <p class="text-sm font-medium text-gray-700">Remblokken (set)</p>
-                                <p class="text-sm text-gray-600">€ 89,00</p>
+                            <div class="border-b pb-2">
+                                <p>Remblokken (set)</p>
+                                <p>€ 89,00</p>
                             </div>
-                            <div class="border-b pb-3">
-                                <p class="text-sm font-medium text-gray-700">Ruitenwisser</p>
-                                <p class="text-sm text-gray-600">€ 15,00</p>
+                            <div class="border-b pb-2">
+                                <p>Ruitenwisser</p>
+                                <p>€ 15,00</p>
                             </div>
-                            <div class="border-b pb-3">
-                                <p class="text-sm font-medium text-gray-700">Koelvloeistof</p>
-                                <p class="text-sm text-gray-600">€ 22,50</p>
+                            <div class="border-b pb-2">
+                                <p>Koelvloeistof</p>
+                                <p>€ 22,50</p>
                             </div>
-                            <div class="border-b pb-3">
-                                <p class="text-sm font-medium text-gray-700">Accu 60Ah</p>
-                                <p class="text-sm text-gray-600">€ 125,00</p>
+                            <div class="border-b pb-2">
+                                <p>Accu 60Ah</p>
+                                <p>€ 125,00</p>
                             </div>
                             <div>
-                                <p class="text-sm font-medium text-gray-700">Transmissievloeistof</p>
-                                <p class="text-sm text-gray-600">€ 35,00</p>
+                                <p>Transmissievloeistof</p>
+                                <p>€ 35,00</p>
                             </div>
                         </div>
                     </div>
@@ -51,46 +51,42 @@
 
                 <!-- Rechterkant: Takenoverzicht -->
                 <div class="lg:col-span-3">
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8">
-                        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-8">
+                    <div class="border p-4 bg-white">
+                        <div class="mb-4">
                             <div>
-                                <h3 class="text-2xl font-bold">Werkplaats overzicht</h3>
-                                <p class="text-gray-600 mt-1">Takenoverzicht met uren en materialen</p>
+                                <h3 class="text-lg font-semibold">Werkplaats overzicht</h3>
                             </div>
-                            <a href="{{ url('/dashboard') }}" class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">
+                            <a href="{{ url('/dashboard') }}" class="inline-block mt-2 border px-3 py-1 text-sm">
                                 Terug naar dashboard
                             </a>
                         </div>
 
-                        <div class="grid gap-4">
+                        <div class="space-y-3">
                     @foreach($afspraken as $afspraak)
-                        <div class="border rounded-lg p-5">
-                            <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between mb-3">
+                        <div class="border p-3">
+                            <div class="mb-2">
                                 <div>
-                                    <h4 class="font-semibold text-lg">{{ \Carbon\Carbon::parse($afspraak->datum)->format('d-m-Y') }} - {{ $afspraak->naam }}</h4>
-                                    <p class="text-sm text-gray-500">Kenteken: {{ strtoupper($afspraak->kenteken) }}</p>
-                                </div>
-                                <span class="inline-flex items-center rounded-full text-sm font-medium px-3 py-1 
-                                    @if($afspraak->status === 'Ingepland') bg-amber-100 text-amber-800
-                                    @elseif($afspraak->status === 'Afgerond') bg-green-100 text-green-800
-                                    @elseif($afspraak->status === 'Afgekeurd') bg-red-100 text-red-800
-                                    @else bg-gray-100 text-gray-800
+                                    <h4 class="font-semibold">{{ \Carbon\Carbon::parse($afspraak->datum)->format('d-m-Y') }} - {{ $afspraak->naam }}</h4>
+                                    <p class="text-sm">Kenteken: {{ strtoupper($afspraak->kenteken) }}</p>
+                                    @if($afspraak->opmerkingen)
+                                        <p class="text-sm mt-1">
+                                            <strong>Opmerkingen:</strong> {{ $afspraak->opmerkingen }}
+                                        </p>
                                     @endif
-                                ">
-                                    {{ ucfirst($afspraak->status) }}
-                                </span>
+                                </div>
+                                <p class="text-sm mt-1"><strong>Status:</strong> {{ ucfirst($afspraak->status) }}</p>
                             </div>
 
-                            <form class="grid gap-3 md:grid-cols-3 md:items-end" data-afspraak-id="{{ $afspraak->id }}" {{ $afspraak->status === 'Afgerond' ? 'style=pointer-events:none;opacity:0.6' : '' }}>
+                            <form class="grid gap-2 md:grid-cols-3 md:items-end" data-afspraak-id="{{ $afspraak->id }}">
                                 @csrf
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Uren</label>
+                                    <label class="block text-sm mb-1">Uren</label>
                                     <input
                                         type="number"
                                         step="0.25"
                                         min="0.25"
                                         name="uren"
-                                        class="w-full border border-gray-300 rounded-lg p-2 text-sm"
+                                        class="w-full border p-2 text-sm"
                                         placeholder="Bijv. 1.5"
                                         value="{{$afspraak->monteurTaken->first()?->uren ?? ''   }}"
                                         required
@@ -99,11 +95,11 @@
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-1">Materialen</label>
+                                    <label class="block text-sm mb-1">Materialen</label>
                                     <input
                                         type="text"
                                         name="materialen"
-                                        class="w-full border border-gray-300 rounded-lg p-2 text-sm"
+                                        class="w-full border p-2 text-sm"
                                         placeholder="Bijv. Olie 5W30, oliefilter"
                                         value="{{$afspraak->monteurTaken->first()?->materialen ?? ''   }}"
 
@@ -113,13 +109,13 @@
                                 </div>
 
                                 <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Kosten (€)</label>
+                                <label class="block text-sm mb-1">Kosten (€)</label>
                                 <input
                                     type="number"
                                     step="0.01"
                                     min="0"
                                     name="kosten"
-                                    class="w-full border border-gray-300 rounded-lg p-2 text-sm"
+                                    class="w-full border p-2 text-sm"
                                     placeholder="Bijv. 157,50"
                                     value="{{$afspraak->monteurTaken->first()?->kosten ?? ''   }}"
                                     required
@@ -127,16 +123,26 @@
                                 >
                             </div>
 
-                                <button type="submit" class="inline-flex items-center justify-center px-4 py-2 {{ $afspraak->status === 'Afgerond' ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700' }} text-white rounded-lg text-sm transition" {{ $afspraak->status === 'Afgerond' ? 'disabled' : '' }}>
+                                <button type="submit" class="border px-3 py-2 text-sm {{ $afspraak->status === 'Afgerond' ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-gray-200' }}" {{ $afspraak->status === 'Afgerond' ? 'disabled' : '' }}>
                                     {{ $afspraak->status === 'Afgerond' ? 'Voltooid' : 'Opslaan' }}
                                 </button>
+
+                                @if($afspraak->status === 'Afgerond')
+                                    <a href="{{ route('monteur.bon', $afspraak->id) }}" target="_blank" class="border px-3 py-2 text-sm bg-gray-100">
+                                        Bon bekijken
+                                    </a>
+                                @else
+                                    <span class="border px-3 py-2 text-sm bg-gray-100 text-gray-500 cursor-not-allowed">
+                                        Bon bekijken
+                                    </span>
+                                @endif
                             </form>
                         </div>
                     @endforeach
 
                     @if($afspraken->isEmpty())
-                        <div class="border rounded-lg p-8 text-center">
-                            <p class="text-gray-500">Er zijn momenteel geen afspraken in het systeem.</p>
+                        <div class="border p-4">
+                            <p class="text-sm text-gray-600">Er zijn momenteel geen afspraken in het systeem.</p>
                         </div>
                     @endif
                         </div>

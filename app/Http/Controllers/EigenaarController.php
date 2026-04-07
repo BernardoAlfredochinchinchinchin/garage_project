@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\MonteurTaak;
+use Illuminate\View\View;
+
+class Eigenaarcontroller extends Controller
+{
+    public function financieelOverzicht(): View
+    {
+        // Tijdelijke eigenaar-check op e-mailadres.
+        abort_unless(
+            auth()->check() && auth()->user()->email === 'achraf@gmail.com',
+            403,
+            'Geen toegang'
+        );
+
+        // Betaalde afspraken tellen mee als omzet.
+        $betaaldQuery = MonteurTaak::query()
+            ->join('afspraken', 'afspraken.id', '=', 'monteur_taken.afspraak_id')
+            ->where('afspraken.status', 'Betaald');
+
+        $totaleOmzet = (clone $betaaldQuery)->sum('monteur_taken.kosten');
+        $aantalBetaaldeFacturen = (clone $betaaldQuery)->count();
+        $gemiddeldeFactuur = $aantalBetaaldeFacturen > 0
+            ? $totaleOmzet / $aantalBetaaldeFacturen
+            : 0;
+
+        // Afgerond maar nog niet betaald = openstaand bedrag.
+        $openstaandBedrag = MonteurTaak::query()
+            ->join('afspraken', 'afspraken.id', '=', 'monteur_taken.afspraak_id')
+            ->where('afspraken.status', 'Afgerond')
+            ->sum('monteur_taken.kosten');
+
+        // Overzicht van betaalde omzet per maand.
+        $omzetPerMaand = MonteurTaak::query()
+            ->join('afspraken', 'afspraken.id', '=', 'monteur_taken.afspraak_id')
+            ->where('afspraken.status', 'Betaald')
+            ->selectRaw("DATE_FORMAT(afspraken.datum, '%Y-%m') as maand, SUM(monteur_taken.kosten) as omzet")
+            ->groupBy('maand')
+            ->orderBy('maand', 'asc')
+            ->get();
+
+        return view('eigenaar', compact(
+            'totaleOmzet',
+            'aantalBetaaldeFacturen',
+            'gemiddeldeFactuur',
+            'openstaandBedrag',
+            'omzetPerMaand'
+        ));
+    }
+}

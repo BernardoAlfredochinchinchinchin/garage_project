@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AfspraakController;
 use App\Http\Controllers\ReceptionistController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\EigenaarController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,9 +20,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/eigenaar/financien', [EigenaarController::class, 'financieelOverzicht'])->name('eigenaar.financien');
+    
     //monteur
     Route::get('/monteur', [MonteurController::class, 'index'])->name('monteur');
     Route::post('/monteur/{afspraak}/save', [MonteurController::class, 'store'])->name('monteur.store');
+    Route::get('/monteur/{afspraak}/bon', [MonteurController::class, 'bon'])->name('monteur.bon');
+    Route::get('/monteur/{afspraak}/betalen', [MonteurController::class, 'betalen'])->name('monteur.betalen');
+
+
     
     // Afspraak routes
     Route::get('/afspraak-maken', [AfspraakController::class, 'create'])->name('afspraak.create');
