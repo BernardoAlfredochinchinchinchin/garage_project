@@ -10,7 +10,6 @@ class Eigenaarcontroller extends Controller
 {
     public function financieelOverzicht(): View
     {
-        // Tijdelijke eigenaar-check op e-mailadres.
         if (auth()->user()->role !== 'admin') {
             abort(403, 'Je mag hier niet komen hé !');
         }

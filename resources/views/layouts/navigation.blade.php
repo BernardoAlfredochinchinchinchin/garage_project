@@ -16,12 +16,18 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
+                    @if (Auth::user()->role === 'admin')
                     <x-nav-link :href="route('monteur')" :active="request()->routeIs('monteur')">
                         {{ __('monteur') }}
                     </x-nav-link>
+
+                    @endif
+                    
+                    @if (Auth::user()->role === 'admin')
                     <x-nav-link :href="route('receptionist')" :active="request()->routeIs('receptionist')">
                         {{ __('receptionist') }}
                     </x-nav-link>
+                    @endif
 
                     @if (Auth::user()->role === 'user')
                     <x-nav-link :href="route('afspraak.index')" :active="request()->routeIs('afspraak.index')">

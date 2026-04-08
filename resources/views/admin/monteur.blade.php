@@ -1,3 +1,9 @@
+@php
+if (auth()->user()->role !== 'admin') {
+    abort(403, 'Je mag hier niet komen hé !');
+}
+@endphp
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-lg font-medium text-gray-700">

@@ -10,8 +10,16 @@ use App\Models\MonteurTaak;
 
 class MonteurController extends Controller
 {
+
+
+    function CheckAdmin(){
+        
+    }    
+
     public function index(): View
     {
+
+        
         // Monteur ziet alleen taken die al goedgekeurd of afgerond zijn.
         $afspraken = Afspraak::whereIn('status', ['Afgerond', 'Goedgekeurd'])->get();
         return view('admin.monteur', compact('afspraken'));
@@ -58,4 +66,5 @@ class MonteurController extends Controller
     return redirect()->route('afspraak.index')->with('success', 'Betaling succesvol verwerkt.');
     }
 
+    
 }
