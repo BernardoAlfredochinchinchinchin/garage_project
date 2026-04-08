@@ -11,6 +11,7 @@
         .label { display: inline-block; width: 120px; font-weight: 700; }
         .actions { margin-top: 16px; }
 
+        /* Verberg knoppen tijdens printen voor een schone bon. */
         @media print {
             .actions { display: none; }
             body { margin: 0; }
@@ -22,6 +23,7 @@
     <div class="bon">
         <h1>Werkbon</h1>
 
+        {{-- Gegevens uit afspraak + monteurtaak. --}}
         <div class="row"><span class="label">Klantnaam:</span> {{ $afspraak->naam }}</div>
         <div class="row"><span class="label">Datum:</span> {{ \Carbon\Carbon::parse($afspraak->datum)->format('d-m-Y') }}</div>
         <div class="row"><span class="label">Kenteken:</span> {{ strtoupper($afspraak->kenteken) }}</div>
@@ -29,6 +31,7 @@
         <div class="row"><span class="label">Materialen:</span> {{ $taak->materialen }}</div>
         <div class="row"><span class="label">Kosten:</span> € {{ number_format($taak->kosten, 2, ',', '.') }}</div>
 
+        {{-- Handmatige fallback voor opnieuw printen. --}}
         <div class="actions">
             <button onclick="window.print()">Print opnieuw</button>
         </div>

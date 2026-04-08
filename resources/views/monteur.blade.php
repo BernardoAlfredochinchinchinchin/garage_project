@@ -86,7 +86,7 @@
                                         step="0.25"
                                         min="0.25"
                                         name="uren"
-                                        class="w-full border p-2 text-sm"
+                                        class="w-full border p-2 text-sm {{ $afspraak->status === 'Afgerond' ? 'bg-gray-100 text-gray-500 cursor-not-allowed' : '' }}"
                                         placeholder="Bijv. 1.5"
                                         value="{{$afspraak->monteurTaken->first()?->uren ?? ''   }}"
                                         required
@@ -99,7 +99,7 @@
                                     <input
                                         type="text"
                                         name="materialen"
-                                        class="w-full border p-2 text-sm"
+                                        class="w-full border p-2 text-sm {{ $afspraak->status === 'Afgerond' ? 'bg-gray-100 text-gray-500 cursor-not-allowed' : '' }}"
                                         placeholder="Bijv. Olie 5W30, oliefilter"
                                         value="{{$afspraak->monteurTaken->first()?->materialen ?? ''   }}"
 
@@ -115,7 +115,7 @@
                                     step="0.01"
                                     min="0"
                                     name="kosten"
-                                    class="w-full border p-2 text-sm"
+                                    class="w-full border p-2 text-sm {{ $afspraak->status === 'Afgerond' ? 'bg-gray-100 text-gray-500 cursor-not-allowed' : '' }}"
                                     placeholder="Bijv. 157,50"
                                     value="{{$afspraak->monteurTaken->first()?->kosten ?? ''   }}"
                                     required
@@ -124,7 +124,7 @@
                             </div>
 
                                 <button type="submit" class="border px-3 py-2 text-sm {{ $afspraak->status === 'Afgerond' ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-gray-200' }}" {{ $afspraak->status === 'Afgerond' ? 'disabled' : '' }}>
-                                    {{ $afspraak->status === 'Afgerond' ? 'Voltooid' : 'Opslaan' }}
+                                    {{ $afspraak->status === 'Afgerond' ? 'Voltooid' : 'Afronden' }}
                                 </button>
 
                                 @if($afspraak->status === 'Afgerond')
