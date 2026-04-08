@@ -22,9 +22,12 @@
                     <x-nav-link :href="route('receptionist')" :active="request()->routeIs('receptionist')">
                         {{ __('receptionist') }}
                     </x-nav-link>
+
+                    @if (Auth::user()->role === 'admin')
                     <x-nav-link :href="route('eigenaar.financien')" :active="request()->routeIs('eigenaar.financien')">
                         {{ __('eigenaar/financien') }}
                     </x-nav-link>
+                    @endif
                 </div>
             </div>
 
