@@ -7,6 +7,9 @@ use App\Http\Controllers\AfspraakController;
 use App\Http\Controllers\ReceptionistController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\EigenaarController;
+use App\Http\Middleware\IsAdmin;
+use App\Http\Controllers\UserController; 
+use App\Http\Controllers\AdminController; 
 
 Route::get('/', function () {
     return view('welcome');
@@ -15,6 +18,19 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware(['auth'])->group(function () {
+    
+    // Admin routes
+    Route::middleware([IsAdmin::class])->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    });
+
+    // User routes
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
