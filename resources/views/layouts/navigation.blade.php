@@ -23,6 +23,12 @@
                         {{ __('receptionist') }}
                     </x-nav-link>
 
+                    @if (Auth::user()->role === 'user')
+                    <x-nav-link :href="route('afspraak.index')" :active="request()->routeIs('afspraak.index')">
+                        {{ __('afspraken') }}
+                    </x-nav-link>
+                    @endif
+
                     @if (Auth::user()->role === 'admin')
                     <x-nav-link :href="route('eigenaar.financien')" :active="request()->routeIs('eigenaar.financien')">
                         {{ __('eigenaar/financien') }}
