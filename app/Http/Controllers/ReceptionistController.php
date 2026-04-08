@@ -11,7 +11,7 @@ class ReceptionistController extends Controller
     {
         $afspraken = Afspraak::orderBy('datum', 'asc')->get();
 
-        return view('receptionist', compact('afspraken')); 
+        return view('admin.receptionist', compact('afspraken')); 
     }
        
     public function edit(Afspraak $afspraak)

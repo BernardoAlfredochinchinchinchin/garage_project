@@ -41,7 +41,7 @@ class Eigenaarcontroller extends Controller
             ->orderBy('maand', 'asc')
             ->get();
 
-        return view('eigenaar', compact(
+        return view('admin.eigenaar', compact(
             'totaleOmzet',
             'aantalBetaaldeFacturen',
             'gemiddeldeFactuur',

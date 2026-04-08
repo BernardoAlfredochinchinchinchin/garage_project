@@ -14,7 +14,7 @@ class MonteurController extends Controller
     {
         // Monteur ziet alleen taken die al goedgekeurd of afgerond zijn.
         $afspraken = Afspraak::whereIn('status', ['Afgerond', 'Goedgekeurd'])->get();
-        return view('monteur', compact('afspraken'));
+        return view('admin.monteur', compact('afspraken'));
     }
 
     public function store(Request $request): JsonResponse
