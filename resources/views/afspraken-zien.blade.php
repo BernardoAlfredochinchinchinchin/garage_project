@@ -32,8 +32,6 @@
                                     
                                 </button>    
                                     @endif
-
-
                                     @if ($afspraak->status === 'Betaald')
                                         <button class="">
                                     <a href="{{ route('monteur.bon', $afspraak->id) }}" target="_blank" class="inline-flex items-center justify-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm transition">

@@ -31,7 +31,6 @@
                 <div class="flex-1 flex flex-col justify-between">
                     <div class="space-y-6">
 
-                        {{-- Show the name from the account (read-only) --}}
                         <div>
                             <label class="block text-black-500 mb-1">Naam:</label>
                             <input 

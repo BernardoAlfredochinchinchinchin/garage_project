@@ -20,7 +20,7 @@
                                 Afspraak maken
                             </a>
                         </div>
-                         <div class="p-6 rounded-lg flex flex-col items-center text-center">
+                        <div class="p-6 rounded-lg flex flex-col items-center text-center">
                             <h4 class="text-xl font-semibold text-gray-800 mb-2">Uw Afspraken</h4>
                             <p class="text-gray-600 mb-5">
                                 Bekijk uw ingeplande en openstaande afspraken!
@@ -35,7 +35,7 @@
                             <p class="text-gray-600 mb-5">
                                 Hier vindt u een compleet overzicht van al uw eerdere en openstaande facturen. U kunt ze eenvoudig bekijken, downloaden voor uw eigen administratie, of direct betalen.
                             </p>
-                            <a href="{{ url('/facturen') }}" class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-6 rounded transition duration-150 ease-in-out">
+                            <a href="{{ url('/monteur/1/bon')}}" class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-6 rounded transition duration-150 ease-in-out">
                                 Facturen bekijken
                             </a>
                         </div>

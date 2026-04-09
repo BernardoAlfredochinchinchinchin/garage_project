@@ -9,13 +9,14 @@ use Illuminate\Support\Facades\Auth;
 class AfspraakController extends Controller
 {
     public function index()
-    {
-        $afspraken = Afspraak::with('user')
-            ->get()
-            ->makeHidden(['taken', 'materialen']);
+{
+    $afspraken = Afspraak::with('user')
+        ->where('user_id', Auth::id()) 
+        ->get()
+        ->makeHidden(['taken', 'materialen']);
 
-        return view('afspraken-zien', compact('afspraken'));
-    }
+    return view('afspraken-zien', compact('afspraken'));
+}
 
     public function create()
     {
