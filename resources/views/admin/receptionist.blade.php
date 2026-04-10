@@ -16,7 +16,6 @@ if (auth()->user()->role !== 'admin') {
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    {{-- Success melding --}}
                     @if(session('success'))
                         <div class="mb-4 p-3 bg-green-100 text-green-800 rounded">
                             {{ session('success') }}
@@ -73,7 +72,6 @@ if (auth()->user()->role !== 'admin') {
                                         
                                     </td>
 
-                                    {{-- Dropdown om status aan te passen --}}\
 
                                     <td class="border p-2">
                                         <form action="{{ route('receptionist.afspraak.updateStatus', $afspraak->id) }}" 

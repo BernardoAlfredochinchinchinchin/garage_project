@@ -13,11 +13,7 @@ class ReceptionistController extends Controller
 
         return view('admin.receptionist', compact('afspraken')); 
     }
-       
-    public function edit(Afspraak $afspraak)
-    {
-        return view('receptionist.edit', compact('afspraak'));
-    }
+    
 
     public function update(Request $request, Afspraak $afspraak)
     {
