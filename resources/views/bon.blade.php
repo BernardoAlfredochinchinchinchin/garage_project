@@ -10,16 +10,11 @@
         .row { margin: 8px 0; }
         .label { display: inline-block; width: 120px; font-weight: 700; }
         .actions { margin-top: 16px; }
+        .actions button { padding: 8px 12px; border-radius: 4px; border: 1px solid #888; background: #f5f5f5; cursor: pointer; }
 
-        /* Verberg knoppen tijdens printen voor een schone bon. */
-        @media print {
-            .actions { display: none; }
-            body { margin: 0; }
-            .bon { border: none; padding: 0; }
-        }
     </style>
 </head>
-<body onload="window.print()">
+<body>
     <div class="bon">
         <h1>Werkbon</h1>
 
@@ -31,10 +26,9 @@
         <div class="row"><span class="label">Materialen:</span> {{ $taak->materialen }}</div>
         <div class="row"><span class="label">Kosten:</span> € {{ number_format($taak->kosten, 2, ',', '.') }}</div>
 
-        {{-- Handmatige fallback voor opnieuw printen. --}}
-        <div class="actions">
-            <button onclick="window.print()">Print opnieuw</button>
-        </div>
+        
     </div>
+
+
 </body>
 </html>

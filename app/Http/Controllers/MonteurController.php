@@ -42,8 +42,10 @@ class MonteurController extends Controller
         $afspraak = Afspraak::find($validated['afspraak_id']);
         $afspraak->update(['status' => 'Afgerond']);
 
-        return response()->json(['success' => true, 'message' => 'Taak opgeslagen']);
+        return response()->json(['success' => true, 'message' => 'Taak afgerond']);
     }
+
+
 
     public function bon(Afspraak $afspraak)
     {

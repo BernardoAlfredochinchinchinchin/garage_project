@@ -24,10 +24,7 @@
                     <p>{{ $aantalBetaaldeFacturen }}</p>
                 </div>
 
-                <div class="border p-3 bg-gray-50">
-                    <p class="text-sm">Gemiddelde Factuur</p>
-                    <p>€ {{ number_format($gemiddeldeFactuur, 2, ',', '.') }}</p>
-                </div>
+                
             </div>
 
             <div class="border p-3 bg-white">

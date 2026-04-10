@@ -53,6 +53,11 @@ if (auth()->user()->role !== 'admin') {
                                                 Afgekeurd
                                             </span>
 
+                                         @elseif($afspraak->status === 'Afgerond')
+                                             <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-sm">
+                                                 Afgerond
+                                             </span>
+                                           
 
                                         @elseif($afspraak->status === 'Betaald')
                                             <span class="px-2 py-1 bg-blue-100 text-green-800 rounded text-sm">
@@ -76,7 +81,7 @@ if (auth()->user()->role !== 'admin') {
                                               class="flex items-center gap-2">
                                             @csrf
                                             @method('PATCH')
-                                    @if($afspraak->status !== 'Betaald')
+                                    @if($afspraak->status !== 'Betaald' && $afspraak->status !== 'Afgerond')
 
                                             <select name="status" class="border rounded p-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300" {{ $afspraak->status === 'Betaald' ? '' : '' }}>
                                                 <option value="in afwachting" {{ $afspraak->status === 'in afwachting' ? 'selected' : '' }}>
@@ -92,7 +97,7 @@ if (auth()->user()->role !== 'admin') {
                                                             @endif
 
                                             
-                                    @if($afspraak->status !== 'Betaald')
+                                    @if($afspraak->status !== 'Betaald' && $afspraak->status !== 'Afgerond')
                                             <button type="submit" 
                                                     class="bg-blue-500 hover:bg-blue-600 text-white text-sm px-3 py-1 rounded ">
                                                 Opslaan

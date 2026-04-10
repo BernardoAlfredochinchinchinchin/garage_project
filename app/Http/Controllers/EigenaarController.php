@@ -21,9 +21,7 @@ class Eigenaarcontroller extends Controller
 
         $totaleOmzet = (clone $betaaldQuery)->sum('monteur_taken.kosten');
         $aantalBetaaldeFacturen = (clone $betaaldQuery)->count();
-        $gemiddeldeFactuur = $aantalBetaaldeFacturen > 0
-            ? $totaleOmzet / $aantalBetaaldeFacturen
-            : 0;
+        
 
         // Afgerond maar nog niet betaald = openstaand bedrag.
         $openstaandBedrag = MonteurTaak::query()
@@ -43,7 +41,6 @@ class Eigenaarcontroller extends Controller
         return view('admin.eigenaar', compact(
             'totaleOmzet',
             'aantalBetaaldeFacturen',
-            'gemiddeldeFactuur',
             'openstaandBedrag',
             'omzetPerMaand'
         ));
